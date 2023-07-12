@@ -6,9 +6,8 @@ import { SecondComponent } from './second/second.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
-  { path: 'first-component', component: FirstComponent },
-  { path: 'second-component', component: SecondComponent },
-  { path: '**', component: FirstComponent },
+  { path: 'route/first-component', component: FirstComponent },
+  { path: 'route/second-component', component: SecondComponent },
   { path: '**', component: PagenotfoundComponent },
 ];
 
