@@ -10,9 +10,7 @@ export class FirstComponent {
   number = 0;
 
   ngOnInit(): void {
-    setInterval(() => {
-      this.onSubmit();
-    }, 1000);
+    this.onSubmit();
   }
 
   onSubmit() {
