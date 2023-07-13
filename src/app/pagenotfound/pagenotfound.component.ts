@@ -91,4 +91,8 @@ export class PagenotfoundComponent implements OnChanges {
       }
     }
   }
+
+  captureData(data: any) {
+    console.log(data);
+  }
 }
