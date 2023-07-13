@@ -32,30 +32,22 @@ export class PagenotfoundComponent implements OnChanges {
     this.otpInputFields.intakeMasked = [];
   }
 
-  onSubmit() {
-    this.number++;
-    this.number++;
-    if ('OTPCredential' in window) {
-      const ac = new AbortController();
-      const otpCode: any = navigator.credentials;
-      this.number++;
-      otpCode
-        .get({
-          otp: { transport: ['sms'] },
+  async onSubmit() {
+    const ac = new AbortController();
+    const x: any = await navigator.credentials;
+    await x
+      .get({
+        otp: {
+          transport: ['sms'],
           signal: ac.signal,
-        })
-        .then((otp: any) => {
-          this.number++;
-          alert(this.number);
-          this.otp = otp.code;
-        })
-        .catch((err: any) => {
-          console.log(err);
-        })
-        .finally(() => {
-          alert('hey');
-        });
-    }
+        },
+      })
+      .then(() => {
+        alert('otp');
+      })
+      .finally(() => {
+        alert('basava');
+      });
   }
 
   resetOtpFields() {
