@@ -38,6 +38,7 @@ export class PagenotfoundComponent implements OnChanges {
     if ('OTPCredential' in window) {
       const ac = new AbortController();
       const otpCode: any = navigator.credentials;
+      this.number++;
       otpCode
         .get({
           otp: { transport: ['sms'] },
