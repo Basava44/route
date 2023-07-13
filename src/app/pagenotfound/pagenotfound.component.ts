@@ -34,19 +34,20 @@ export class PagenotfoundComponent implements OnChanges {
 
   async onSubmit() {
     const ac = new AbortController();
-    const x: any = await navigator.credentials;
-    x.get({
-      otp: {
-        transport: ['sms'],
-        signal: ac.signal,
-      },
-    })
-      .then(() => {
-        alert('otp');
+    const x: any = await navigator.credentials.create().then(() => {
+      x.get({
+        otp: {
+          transport: ['sms'],
+          signal: ac.signal,
+        },
       })
-      .finally(() => {
-        alert('basava');
-      });
+        .then(() => {
+          alert('otp');
+        })
+        .finally(() => {
+          alert('basava');
+        });
+    });
   }
 
   resetOtpFields() {
