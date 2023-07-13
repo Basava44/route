@@ -1,11 +1,17 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-pagenotfound',
   templateUrl: './pagenotfound.component.html',
   styleUrls: ['./pagenotfound.component.css'],
 })
-export class PagenotfoundComponent {
+export class PagenotfoundComponent implements OnChanges {
   otp: string = '';
   number = 0;
   @ViewChild('oref', { static: false }) otpRef: ElementRef<HTMLElement> | any;
@@ -16,6 +22,10 @@ export class PagenotfoundComponent {
     this.resetOtpFields();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
+
   submit() {
     alert(this.otpInputFields.intakeReal);
     this.otpInputFields.intakeReal = [];
@@ -24,15 +34,9 @@ export class PagenotfoundComponent {
 
   onSubmit() {
     this.number++;
+    this.number++;
     if ('OTPCredential' in window) {
-      this.number++;
       const ac = new AbortController();
-      const form = document.querySelector('form');
-      if (form) {
-        form.addEventListener('submit', (e) => {
-          ac.abort();
-        });
-      }
       const otpCode: any = navigator.credentials;
       otpCode
         .get({
@@ -43,7 +47,6 @@ export class PagenotfoundComponent {
           this.number++;
           alert(this.number);
           this.otp = otp.code;
-          if (form) form.submit();
         })
         .catch((err: any) => {
           console.log(err);
