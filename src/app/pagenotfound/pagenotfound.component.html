@@ -1,5 +1,5 @@
 <h1>Not Found Component</h1>
-<h2>test 11: {{ number }}</h2>
+<h2>test 12: {{ number }}</h2>
 <form #ngform="ngForm" #oref>
   <div class="resend-pin center-aligned">
     <div class="opt-input" autocomplete="one-time-code">
@@ -13,7 +13,7 @@
           id="input1"
           [(ngModel)]="otpInputFields.intakeMasked[0]"
           (keyup)="tabTrigger($event, 0)"
-          onchange="captureData(event)"
+          (change)="captureData($event)"
         />
       </mat-form-field>
       <mat-form-field>

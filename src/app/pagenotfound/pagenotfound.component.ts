@@ -22,6 +22,10 @@ export class PagenotfoundComponent implements OnChanges {
     this.resetOtpFields();
   }
 
+  captureData(data: any) {
+    console.log(data);
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
   }
@@ -90,9 +94,5 @@ export class PagenotfoundComponent implements OnChanges {
         this.otpRef.nativeElement[0].focus();
       }
     }
-  }
-
-  captureData(data: any) {
-    console.log(data);
   }
 }
