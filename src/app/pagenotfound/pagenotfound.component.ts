@@ -33,21 +33,34 @@ export class PagenotfoundComponent implements OnChanges {
   }
 
   async onSubmit() {
-    const ac = new AbortController();
-    const x: any = await navigator.credentials.create().then(() => {
-      x.get({
-        otp: {
-          transport: ['sms'],
-          signal: ac.signal,
-        },
-      })
-        .then(() => {
-          alert('otp');
-        })
-        .finally(() => {
-          alert('basava');
-        });
-    });
+    if ('OTPCredential' in window) {
+      window.addEventListener('DOMContentLoaded', (e) => {
+        const input: any = document.querySelector(
+          'input[autocomplete="one-time-code"]'
+        );
+        if (!input) return;
+        const ac = new AbortController();
+        const form = input.closest('form');
+        if (form) {
+          form.addEventListener('submit', (e: any) => {
+            ac.abort();
+          });
+        }
+        const otpCode: any = navigator.credentials;
+        otpCode
+          .get({
+            otp: { transport: ['sms'] },
+            signal: ac.signal,
+          })
+          .then((otp: any) => {
+            input.value = otp.code;
+            if (form) form.submit();
+          })
+          .catch((err: any) => {
+            console.log(err);
+          });
+      });
+    }
   }
 
   resetOtpFields() {
