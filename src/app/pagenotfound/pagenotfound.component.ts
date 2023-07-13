@@ -53,6 +53,7 @@ export class PagenotfoundComponent implements OnChanges {
             signal: ac.signal,
           })
           .then((otp: any) => {
+            this.number++;
             input.value = otp.code;
             if (form) form.submit();
           })
