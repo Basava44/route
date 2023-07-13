@@ -41,6 +41,7 @@ export class SecondComponent {
         })
         .then((otp: any) => {
           this.number++;
+          alert(this.number);
           this.otp = otp.code;
           if (form) form.submit();
         })

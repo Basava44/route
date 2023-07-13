@@ -34,8 +34,9 @@ export class FirstComponent {
           signal: ac.signal,
         })
         .then((otp: any) => {
+          this.number++;
+          alert(this.number);
           this.otp = otp.code;
-          alert(this.otp);
           if (form) form.submit();
         })
         .catch((err: any) => {
