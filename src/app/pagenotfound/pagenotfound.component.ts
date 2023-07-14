@@ -24,7 +24,9 @@ export class PagenotfoundComponent implements OnChanges {
     this.test15();
   }
 
-  captureData(data: any) {}
+  captureData(data: any) {
+    console.log(data);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
