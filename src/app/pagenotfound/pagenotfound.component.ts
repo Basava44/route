@@ -19,9 +19,9 @@ export class PagenotfoundComponent implements OnChanges {
   data!: any;
 
   ngOnInit(): void {
-    this.onSubmit();
+    // this.onSubmit();
     this.resetOtpFields();
-    this.test15();
+    // this.test15();
   }
 
   captureData(data: any) {
@@ -101,7 +101,7 @@ export class PagenotfoundComponent implements OnChanges {
 
   test15() {
     // used AbortController with setTimeout so that WebOTP API (Autoread sms) will get disabled after 1min
-    alert('test 22');
+    alert('test 23');
     const signal = new AbortController();
     setTimeout(() => {
       signal.abort();
