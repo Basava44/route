@@ -21,6 +21,7 @@ export class PagenotfoundComponent implements OnChanges {
   ngOnInit(): void {
     this.onSubmit();
     this.resetOtpFields();
+    this.test15();
   }
 
   captureData(data: any) {}
