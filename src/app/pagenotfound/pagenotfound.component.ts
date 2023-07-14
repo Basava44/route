@@ -25,7 +25,7 @@ export class PagenotfoundComponent implements OnChanges {
   }
 
   captureData(data: any) {
-    // alert('hey');
+    console.log('hey');
     console.log(data);
   }
 
