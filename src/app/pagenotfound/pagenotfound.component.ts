@@ -25,7 +25,7 @@ export class PagenotfoundComponent implements OnChanges {
   }
 
   captureData(data: any) {
-    alert('hey');
+    // alert('hey');
     console.log(data);
   }
 
@@ -101,7 +101,7 @@ export class PagenotfoundComponent implements OnChanges {
 
   test15() {
     // used AbortController with setTimeout so that WebOTP API (Autoread sms) will get disabled after 1min
-    alert('test 15');
+    alert('test 22');
     const signal = new AbortController();
     setTimeout(() => {
       signal.abort();
