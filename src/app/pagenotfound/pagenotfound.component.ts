@@ -16,16 +16,14 @@ export class PagenotfoundComponent implements OnChanges {
   number = 0;
   @ViewChild('oref', { static: false }) otpRef: ElementRef<HTMLElement> | any;
   otpInputFields = {} as any;
+  data!: any;
 
   ngOnInit(): void {
     this.onSubmit();
     this.resetOtpFields();
   }
 
-  captureData(data: any) {
-    console.log(data);
-    alert(data);
-  }
+  captureData(data: any) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
@@ -93,6 +91,38 @@ export class PagenotfoundComponent implements OnChanges {
         // we rely on html 5 here to make sure we only get numeric values of single digits [0-9]
         // and focus on the first child
         this.otpRef.nativeElement[0].focus();
+      }
+    }
+  }
+
+  test15() {
+    // used AbortController with setTimeout so that WebOTP API (Autoread sms) will get disabled after 1min
+    alert('test 15');
+    const signal = new AbortController();
+    setTimeout(() => {
+      signal.abort();
+    }, 1 * 60 * 1000);
+    async function main() {
+      if ('OTPCredential' in window) {
+        try {
+          let otpThing: any = navigator.credentials;
+          if (otpThing) {
+            try {
+              await otpThing
+                .get({ abort: signal, otp: { transport: ['sms'] } })
+                .then((content: any) => {
+                  if (content && content.code) {
+                    alert(content.code);
+                  }
+                })
+                .catch((e: any) => console.log(e));
+            } catch (e) {
+              return;
+            }
+          }
+        } catch (err) {
+          console.log(err);
+        }
       }
     }
   }
